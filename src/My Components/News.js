@@ -9,16 +9,47 @@ export class News extends Component {
         this.state={
             articles: [],
             loading:false,
-            page:1
+            page:1,
+            // flag:true
         }
     }
     async componentDidMount(){
         console.log("cdm");
-        let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0";
+        let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=1&pageSize=20";
         let data= await fetch(url);
         let parsedData=await data.json();
-        console.log(data);
-        this.setState({articles: parsedData.articles})
+        // console.log(data);
+        this.setState({articles: parsedData.articles,totalResults:parsedData.totalResults })
+    }
+     handleNextClick=async ()=>{
+        if(this.state.page+1>Math.ceil(this.state.totalResults/20)){
+            // this.setState({
+            //     flag:false
+            // })
+        }
+        else{
+        console.log("next click");
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page}&pageSize=20`;
+        let data= await fetch(url);
+        let parsedData=await data.json();
+        // console.log(data);
+        this.setState({
+            page:this.state.page+1,
+            articles: parsedData.articles
+
+        })}
+    }
+     handlePrevClick=async ()=>{
+        console.log("prev click");
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page}&pageSize=20`;
+        let data= await fetch(url);
+        let parsedData=await data.json();
+        // console.log(data);
+        this.setState({
+            page:this.state.page-1,
+            articles: parsedData.articles
+
+        })
     }
     render() {
         console.log("render");
@@ -37,8 +68,8 @@ export class News extends Component {
 
                 </div>
                 <div className=" d-flex justify-content-between" >
-                <button type="button my-3" class="btn btn-dark">Previous</button>
-                <button type="button my-3" class="btn btn-dark">Next</button>
+                <button disabled={this.state.page<=1} type="button my-3" className="btn btn-dark" onClick={this.handlePrevClick}>&larr;  Previous</button>
+                <button disabled={this.state.flag} type="button my-3" className="btn btn-dark" onClick={this.handleNextClick}>Next  &rarr;</button>
                 </div>
             </div>
         )
