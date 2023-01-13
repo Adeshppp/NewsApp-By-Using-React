@@ -8,7 +8,8 @@ export class News extends Component {
         console.log("Hellow i am in constructor of News component");
         this.state={
             articles: [],
-            loading:false
+            loading:false,
+            page:1
         }
     }
     async componentDidMount(){
@@ -22,7 +23,7 @@ export class News extends Component {
     render() {
         console.log("render");
         return (
-            <div className='container my-3'>
+            <div className='container my-3 '>
                 <h2>Top Headlines</h2>
                 <div className="row">
                 {this.state.articles.map((element)=>{
@@ -34,6 +35,10 @@ export class News extends Component {
                    
                     
 
+                </div>
+                <div className=" d-flex justify-content-between" >
+                <button type="button my-3" class="btn btn-dark">Previous</button>
+                <button type="button my-3" class="btn btn-dark">Next</button>
                 </div>
             </div>
         )
