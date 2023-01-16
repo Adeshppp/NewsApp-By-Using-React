@@ -25,7 +25,7 @@ export class News extends Component {
         if(this.state.page+1>Math.ceil(this.state.totalResults/this.state.pageSize)){}
         else{
         console.log("next click");
-        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page}&pageSize=${this.state.pageSize}`;
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page+1}&pageSize=${this.state.pageSize}`;
         let data= await fetch(url);
         let parsedData=await data.json();
         // console.log(data);
@@ -38,7 +38,7 @@ export class News extends Component {
     }
      handlePrevClick=async ()=>{
         console.log("prev click");
-        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page}&pageSize=${this.state.pageSize}`;
+        let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page-1}&pageSize=${this.state.pageSize}`;
         let data= await fetch(url);
         let parsedData=await data.json();
         // console.log(data);
@@ -66,7 +66,7 @@ export class News extends Component {
                 </div>
                 <div className=" d-flex justify-content-between" >
                 <button disabled={this.state.page<=1} type="button my-3" className="btn btn-dark" onClick={this.handlePrevClick}>&larr;  Previous</button>
-                <button disabled={this.state.flag} type="button my-3" className="btn btn-dark" onClick={this.handleNextClick}>Next  &rarr;</button>
+                <button disabled={this.state.page+1>Math.ceil(this.state.totalResults/this.state.pageSize)} type="button my-3" className="btn btn-dark" onClick={this.handleNextClick}>Next  &rarr;</button>
                 </div>
             </div>
         )
