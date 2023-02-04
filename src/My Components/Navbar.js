@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export class Navbar extends Component {
     static propTypes = {}
+
+    
+      
+
 
     render() {
         return (
@@ -25,10 +29,21 @@ export class Navbar extends Component {
                             <li className="nav-item"> <Link className="nav-link" to="/science">Science</Link></li>
                             <li className="nav-item"> <Link className="nav-link" to="/sports">Sports</Link></li>
                             <li className="nav-item"> <Link className="nav-link" to="/technology">Technology</Link></li>
-                           
+
                         </ul>
-                     
+
+
                     </div>
+                    <label className="form-check-label text-light" htmlFor="flexSwitchCheckDefault">INDIA NEWS</label>
+                    <div className="form-check form-switch mx-3">
+                        
+                        <input className="form-check-input" onClick={this.props.handleCountryToggle} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                        <label className="form-check-label text-light" htmlFor="flexSwitchCheckDefault">USA NEWS</label>
+
+                    </div>
+
+                
+
                 </nav>
             </>
         )

@@ -12,7 +12,7 @@ export class NewsItem extends Component {
                     <img className="card-img-top" src={!imgUrl?"https://www.shutterstock.com/image-vector/breaking-news-live-on-world-600w-1891457170.jpg":imgUrl} alt="Card image cap" />
                     <div className="card-body">
                         <h5 className="card-title">{title}</h5>
-                        <span class="badge rounded-pill text-bg-dark">Source : {source}</span>
+                        <span className="badge rounded-pill text-bg-dark">Source : {source}</span>
                         <p className="card-text">{description}</p>
                         <p className="card-text"><small className="text-muted">By {!author?"unknown":author} on {new Date(date).toGMTString()}</small></p>
 

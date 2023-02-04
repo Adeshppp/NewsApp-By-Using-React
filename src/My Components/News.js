@@ -71,6 +71,7 @@ export class News extends Component {
         console.log("render");
         return (
             <div className='container my-3 '>
+                {console.log(this.props.country)}
                 <h1 className="text-center">Top Headlines </h1>
                 <div className="text-center">{this.state.loading && <Spinner />}</div>
                 <div className="row">

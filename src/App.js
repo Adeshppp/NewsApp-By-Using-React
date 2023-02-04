@@ -10,6 +10,21 @@ import {
 } from "react-router-dom";
 
 export default class App extends Component {
+  
+  state={
+    country:'in'
+  };
+
+
+  handleCountryToggle = () => {
+    this.setState(prevState => {
+      return {
+        country: prevState.country === 'in' ? 'us' : 'in'
+        
+      };
+    });
+  };
+
   constructor(){
     super();
     this.state={
@@ -18,11 +33,13 @@ export default class App extends Component {
     }
   }
   render() {
+    const { countries } = this.state;
     return (
       
       <BrowserRouter>
 
-        <Navbar />
+        <Navbar  handleCountryToggle={this.handleCountryToggle}/>
+        
         <Routes>
           
 
