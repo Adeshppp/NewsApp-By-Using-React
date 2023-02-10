@@ -14,22 +14,28 @@ export class News extends Component {
     //     name: PropTypes.string,
     //     pageSize: PropTypes.number
     // }
-    constructor() {
-        super();
+
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    constructor(props) {
+        super(props);
         this.state = {
             articles: [],
             loading: false,
             page: 1,
-            apikey:"f4db36aa4f83445687fb7e57bd5c6f19"
+            apikey: "f4db36aa4f83445687fb7e57bd5c6f19"
         }
+        document.title = `${this.capitalizeFirstLetter(this.props.catagory)} - News`;
     }
     // async updateNews(){
-    //     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.catagory}&apiKey=603b756ed8f64fddac80a3cbab48e2d0&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     //     this.setState({ loading: true })
+    //     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.catagory}&apiKey=${this.state.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     //     let data = await fetch(url);
     //     let parsedData = await data.json();
     //     this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
-        
+
     // }
     async componentDidMount() {
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.catagory}&apiKey=${this.state.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -50,9 +56,10 @@ export class News extends Component {
                 articles: parsedData.articles,
                 loading: false
             })
+            // this.setState({page:this.state.page+1});
+            // this.updateNews();
         }
-        // this.setState({page:this.state.page+1});
-        // this.updateNews();
+
     }
     handlePrevClick = async () => {
         this.setState({ loading: true })
@@ -72,12 +79,12 @@ export class News extends Component {
         return (
             <div className='container my-3 '>
                 {console.log(this.props.country)}
-                <h1 className="text-center">Top Headlines </h1>
+                <h1 className="text-center">Top Headlines</h1>
                 <div className="text-center">{this.state.loading && <Spinner />}</div>
                 <div className="row">
                     {!this.state.loading && this.state.articles.map((element) => {
                         return <div className="col-md-4" key={element.url}>
-                            <NewsItem title={element.title} description={element.description} newsUrl={element.url} imgUrl={element.urlToImage} date={element.publishedAt} author={element.author} source={element.source.name}/>
+                            <NewsItem title={element.title} description={element.description} newsUrl={element.url} imgUrl={element.urlToImage} date={element.publishedAt} author={element.author} source={element.source.name} />
                         </div>
                     })}
                 </div>
