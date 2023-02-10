@@ -43,21 +43,21 @@ export default class App extends Component {
         <Routes>
           
 
-          <Route path="/" element={<News key="top-headlines" pageSize={this.state.pageSize} country={this.state.country} catagory="general" />}></Route>
+          <Route path="/" element={<News key="top-headlines" pageSize={this.state.pageSize} country={this.state.country} category="general" />}></Route>
 
-          <Route path="/business" element={<News key="business" pageSize={this.state.pageSize} country={this.state.country} catagory="business" />}></Route>
+          <Route path="/business" element={<News key="business" pageSize={this.state.pageSize} country={this.state.country} category="business" />}></Route>
 
-          <Route path="/entertainment" element={<News key="entertainment" pageSize={this.state.pageSize} country={this.state.country} catagory="entertainment" />}></Route>
+          <Route path="/entertainment" element={<News key="entertainment" pageSize={this.state.pageSize} country={this.state.country} category="entertainment" />}></Route>
 
-          <Route path="/general" element={<News key="general" pageSize={this.state.pageSize} country={this.state.country} catagory="general" />}></Route>
+          <Route path="/general" element={<News key="general" pageSize={this.state.pageSize} country={this.state.country} category="general" />}></Route>
 
-          <Route path="/health" element={<News key="health" pageSize={this.state.pageSize} country={this.state.country} catagory="health" />}></Route>
+          <Route path="/health" element={<News key="health" pageSize={this.state.pageSize} country={this.state.country} category="health" />}></Route>
 
-          <Route path="/science" element={<News key="science" pageSize={this.state.pageSize} country={this.state.country} catagory="science" />}></Route>
+          <Route path="/science" element={<News key="science" pageSize={this.state.pageSize} country={this.state.country} category="science" />}></Route>
 
-          <Route path="/sports" element={<News key="sports" pageSize={this.state.pageSize} country={this.state.country} catagory="sports" />}></Route>
+          <Route path="/sports" element={<News key="sports" pageSize={this.state.pageSize} country={this.state.country} category="sports" />}></Route>
 
-          <Route path="/technology" element={<News key="technology" pageSize={this.state.pageSize} country={this.state.country} catagory="technology" />}></Route>
+          <Route path="/technology" element={<News key="technology" pageSize={this.state.pageSize} country={this.state.country} category="technology" />}></Route>
 
         </Routes>
       </BrowserRouter>

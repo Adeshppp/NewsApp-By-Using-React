@@ -1,3 +1,11 @@
+# React Component Lifecycle
+
+The series of events hat happen from the Mounting of a react component to its Unmounting.
+
+Mounting : Birth of component
+Update : Growth of component
+Unmounting : Death of component
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
