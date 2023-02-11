@@ -10,10 +10,8 @@ import {
 } from "react-router-dom";
 
 export default class App extends Component {
-  
-  state={
-    country:'in'
-  };
+
+
 
 
   handleCountryToggle = () => {
@@ -24,23 +22,42 @@ export default class App extends Component {
     });
   };
 
-  constructor(){
+  setApi=(event)=>{
+    this.setState({apiKey:event.target.value, permission:true})
+  }
+  constructor() {
     super();
-    this.state={
-        country:"in",
-        pageSize:18
+    this.state = {
+      country: "in",
+      pageSize: 18,
+      apiKey:"",
+      permission:false
     }
+  }
+  handleChange=(event)=>{
+    this.setState({apiKey:event.target.value})
   }
   render() {
     const { countries } = this.state;
     return (
-      
+
       <BrowserRouter>
 
-        <Navbar  handleCountryToggle={this.handleCountryToggle}/>
+        <Navbar handleCountryToggle={this.handleCountryToggle} />
+        {/* <div>
+          <form>
+            <label>
+              Enter your API key <input type="text" value={this.state.apiKey} onChange={this.handleChange}/>
+            </label>
+            <button variant="primary" type="submit" onClick={this.setApi}> Submit </button>
+          </form>
+        </div>
         
+        {this.state.permission ?
+        
+        ( */}
         <Routes>
-          
+
 
           <Route path="/" element={<News key="top-headlines" pageSize={this.state.pageSize} country={this.state.country} category="general" />}></Route>
 
@@ -59,7 +76,14 @@ export default class App extends Component {
           <Route path="/technology" element={<News key="technology" pageSize={this.state.pageSize} country={this.state.country} category="technology" />}></Route>
 
         </Routes>
+         {/* ):null */}
+  {/* } */}
+  
+
+
+
+
       </BrowserRouter>
-    )
+    );
   }
 }
