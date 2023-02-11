@@ -20,7 +20,6 @@ export default class App extends Component {
     this.setState(prevState => {
       return {
         country: prevState.country === 'in' ? 'us' : 'in'
-        
       };
     });
   };

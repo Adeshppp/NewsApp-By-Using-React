@@ -1,3 +1,5 @@
+You can access this site on : https://adeshppp.github.io/NewsApp-By-Using-React/
+
 # React Component Lifecycle
 
 The series of events hat happen from the Mounting of a react component to its Unmounting.
