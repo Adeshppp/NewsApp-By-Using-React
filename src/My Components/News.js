@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 export class News extends Component {
 
@@ -95,3 +95,6 @@ export class News extends Component {
 }
 
 export default News
+
+
+// curl -I https://newsapi.org/v2/top-headlines?country=us&apiKey=f4db36aa4f83445687fb7e57bd5c6f19&category=general&page=1&pageSize=18
