@@ -25,49 +25,14 @@ export default class App extends Component {
     this.state = {
       country: "in",
       pageSize: 18,
-      // apiKey: "f4db36aa4f83445687fb7e57bd5c6f19",
-      apiKey:"603b756ed8f64fddac80a3cbab48e2d0",
+      apiKey: "f4db36aa4f83445687fb7e57bd5c6f19",
+      // apiKey:"603b756ed8f64fddac80a3cbab48e2d0",
       isLoaded: false,
       error: false
     }
   }
 
-  // handleApiKeyChange = event => {
-  //   this.setState({ apiKey: event.target.value });
-  // };
-
-  // handleApiKeySubmit = event => {
-  //   event.preventDefault();
-  //   this.setState({ isLoaded: true });
-  // };
-
-  // componentDidCatch(error, info) {
-  //   this.setState({ error: true });
-  // }
-
   render() {
-
-    // ================================= Api Key from user =====================================
-    // const { apiKey, isLoaded, error } = this.state;
-
-    // if (!isLoaded) {
-    //   return (
-    //     <form onSubmit={this.handleApiKeySubmit}>
-    //       <input
-    //         type="text"
-    //         placeholder="Enter API Key"
-    //         value={apiKey}
-    //         onChange={this.handleApiKeyChange}
-    //       />
-    //       <button type="submit">Submit</button>
-    //     </form>
-    //   );
-    // }
-
-    // if (error) return <div>An error occurred. Please enter a valid API key.</div>;
-    // above code takes apikey from user
-    // =========================================================================================
-
     return <BrowserRouter >
       <Navbar handleCountryToggle={this.handleCountryToggle} />
       <Routes>
@@ -86,6 +51,9 @@ export default class App extends Component {
         <Route path="/sports" element={<News key="sports" pageSize={this.state.pageSize} apiKey={this.state.apiKey} country={this.state.country} category="sports" />}></Route>
 
         <Route path="/technology" element={<News key="technology" pageSize={this.state.pageSize} apiKey={this.state.apiKey} country={this.state.country} category="technology" />}></Route>
+
+        <Route path="/technology" element={<News key="cricket" pageSize={this.state.pageSize} apiKey={this.state.apiKey} country={this.state.country} q="cricket" />}></Route>
+
       </Routes>
     </BrowserRouter >
   }
