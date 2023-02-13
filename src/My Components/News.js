@@ -40,13 +40,39 @@ export class News extends Component {
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
     }
 
-    fetchMoreData=async()=>{ this.setState({page:this.state.page+1})
+    fetchMoreData=async()=>{
+        this.setState({page:this.state.page+1})
         fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
             .then(res => res.json())
             .then(parsedData => this.setState({ page: this.state.page + 1, articles: this.state.articles.concat(parsedData.articles), }))
             .catch(error => this.setState({ error }));
     }
 
+    // handleNextClick = async () => {
+    //         this.setState({ page: this.state.page + 1 });
+    //         this.updateNews();
+        
+    //     // if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
+            // this.setState({ loading: true })
+            // fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
+            //     .then(res => res.json())
+            //     .then(parsedData => this.setState({ page: this.state.page + 1, articles: parsedData.articles, }))
+            //     .catch(error => this.setState({ error }));
+            // this.setState({ loading: false })
+    //     // }
+
+    // }
+    // handlePrevClick = async () => {
+    //     this.setState({ page: this.state.page - 1 });
+    //     this.updateNews();
+    
+    //     // this.setState({ loading: true })
+    //     // fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
+    //     //     .then(res => res.json())
+    //     //     .then(parsedData => this.setState({ page: this.state.page - 1, articles: parsedData.articles, }))
+    //     //     .catch(error => this.setState({ error }));
+    //     // this.setState({ loading: false })
+    // }
 
     async componentDidMount() {
 
