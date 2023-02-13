@@ -33,10 +33,13 @@ export class News extends Component {
         document.title = `${this.capitalizeFirstLetter(this.props.category)} - News`;
     }
     async updateNews() {
+        this.props.setProgress(20);
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
         let data = await fetch(url);
+        this.props.setProgress(60);
         let parsedData = await data.json();
+        this.props.setProgress(100);
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false })
     }
 
@@ -65,7 +68,7 @@ export class News extends Component {
     // handlePrevClick = async () => {
     //     this.setState({ page: this.state.page - 1 });
     //     this.updateNews();
-    
+
     //     // this.setState({ loading: true })
     //     // fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`)
     //     //     .then(res => res.json())
