@@ -48,7 +48,7 @@ export class News extends Component {
         fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.state.apiKey}&category=${this.props.category}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`)
             .then(res => res.json())
             .then(parsedData => this.setState({ page: this.state.page + 1, articles: this.state.articles.concat(parsedData.articles), }))
-            .catch(error => this.setState({ error }));
+            // .catch(error => this.setState({ error }));
     }
 
     // handleNextClick = async () => {
@@ -84,9 +84,9 @@ export class News extends Component {
     render() {
         return (
             <>
-                {this.state.error ? (
+                {/* {this.state.error ? (
                     <div>An error occurred. Please try again later.</div>
-                ) : (
+                ) : ( */}
                     <div className='container my-3 '>
                         <h1 className="text-center">Top {this.capitalizeFirstLetter(this.props.category)} Headlines</h1>
                         <div className="text-center">{this.state.loading && <Spinner />}</div>
@@ -108,7 +108,8 @@ export class News extends Component {
                         </InfiniteScroll>
                       
                     </div>
-                )}
+                {/* ) */}
+                {/* } */}
             </>
         )
     }

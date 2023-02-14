@@ -1,4 +1,3 @@
-import { getByTitle } from '@testing-library/react'
 import React, { Component } from 'react'
 
 export class NewsItem extends Component {
@@ -16,7 +15,7 @@ export class NewsItem extends Component {
                         <p className="card-text">{description}</p>
                         <p className="card-text"><small className="text-muted">By {!author ? "unknown" : author} on {new Date(date).toGMTString()}</small></p>
 
-                        <a href={newsUrl} target="_blank" className="btn btn-sm btn-dark">Read More</a>
+                        <a href={newsUrl} target="blank" className="btn btn-sm btn-dark">Read More</a>
                     </div>
                 </div>
             </>
